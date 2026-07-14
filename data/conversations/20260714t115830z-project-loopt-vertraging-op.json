@@ -1,0 +1,99 @@
+{
+  "id": "20260714t115830z-project-loopt-vertraging-op",
+  "title": "Project loopt vertraging op · Lars, Claire, Nora",
+  "scenarioId": "project-delay",
+  "scenario": "Een belangrijk intern project loopt een week achter. Er ontbreken technische documentatie, duidelijke eigenaars en een haalbare planning.",
+  "objective": "Maak blokkeringen zichtbaar, verdeel acties en kom tot een haalbare afspraak.",
+  "language": "nl",
+  "tension": "normaal",
+  "generatedAt": "2026-07-14T11:58:30.253Z",
+  "generatedBy": "github-models",
+  "model": "openai/gpt-4.1",
+  "participants": [
+    {
+      "id": "P014",
+      "name": "Lars De Smet",
+      "role": "Managing Director",
+      "cool_blue": 18,
+      "fiery_red": 62,
+      "sunshine_yellow": 12,
+      "earth_green": 8
+    },
+    {
+      "id": "P003",
+      "name": "Claire Lambert",
+      "role": "Legal Counsel",
+      "cool_blue": 66,
+      "fiery_red": 12,
+      "sunshine_yellow": 7,
+      "earth_green": 15
+    },
+    {
+      "id": "P039",
+      "name": "Nora De Meyer",
+      "role": "People Partner",
+      "cool_blue": 12,
+      "fiery_red": 10,
+      "sunshine_yellow": 14,
+      "earth_green": 64
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "turn": 1,
+      "speakerId": "P014",
+      "speakerName": "Lars De Smet",
+      "text": "Het project loopt een week achter door ontbrekende technische documentatie, onduidelijke eigenaars en een niet-realistische planning. Ik wil vandaag duidelijk vastleggen wie verantwoordelijk is voor welke onderdelen, wat er nog aan documentatie mist en wanneer we dit oplossen. Graag binnen een uur een overzicht van de blokkeringen en een voorstel voor een haalbare planning."
+    },
+    {
+      "id": "m2",
+      "turn": 2,
+      "speakerId": "P003",
+      "speakerName": "Claire Lambert",
+      "text": "Om het overzicht te structureren: kunnen we eerst per onderdeel specificeren welke technische documentatie ontbreekt, en wie daar nu (al dan niet impliciet) verantwoordelijk voor is? Zodra dat helder is, kunnen we realistisch inschatten welke acties nodig zijn en een haalbare timing bepalen. Ik stel voor dat ieder teamlid binnen het komende half uur de ontbrekende documentatie en eigenaars voor hun domein doorgeeft, zodat we daarna het overzicht en de planning kunnen opstellen."
+    },
+    {
+      "id": "m3",
+      "turn": 3,
+      "speakerId": "P039",
+      "speakerName": "Nora De Meyer",
+      "text": "Goed voorstel, Claire. Ik kan het overzicht bijhouden zodra iedereen zijn input deelt. Als het oké is, bundel ik alle info en stuur ik binnen het uur de gezamenlijke lijst met openstaande punten, eigenaars en een voorstel voor een nieuwe planning rond. Laat gerust weten als iemand hulp nodig heeft bij het inventariseren."
+    },
+    {
+      "id": "m4",
+      "turn": 4,
+      "speakerId": "P014",
+      "speakerName": "Lars De Smet",
+      "text": "Prima, Nora neemt het overzicht en de bundeling op zich. Iedereen deelt binnen 30 minuten zijn ontbrekende documentatie en eigenaars, zodat Nora uiterlijk over een uur het voorstel kan sturen. Geen uitstel: direct aanleveren bij Nora."
+    },
+    {
+      "id": "m5",
+      "turn": 5,
+      "speakerId": "P003",
+      "speakerName": "Claire Lambert",
+      "text": "Bedankt voor de duidelijke afspraken, Lars en Nora. Ik lever mijn input binnen de gestelde termijn aan bij Nora, inclusief concrete verwijzing naar ontbrekende documentatie en de huidige verantwoordelijken. Mocht er bij het inventariseren juridische vragen ontstaan, dan ben ik beschikbaar voor toelichting."
+    },
+    {
+      "id": "m6",
+      "turn": 6,
+      "speakerId": "P039",
+      "speakerName": "Nora De Meyer",
+      "text": "Dank jullie wel voor de heldere afspraken en jullie betrokkenheid. Ik wacht de input van iedereen af en zorg dat ik alles samenbreng in één duidelijk overzicht, inclusief eigenaars en aangepaste planning. Voor vragen of als er iets onduidelijk is, ben ik bereikbaar via chat of telefoon."
+    },
+    {
+      "id": "m7",
+      "turn": 7,
+      "speakerId": "P014",
+      "speakerName": "Lars De Smet",
+      "text": "Goed, Nora en Claire, jullie aanpak is duidelijk. Iedereen: geen excuses, input uiterlijk over 25 minuten bij Nora. Daarna verwacht ik binnen het uur het volledige overzicht met eigenaars en realistische planning. Mochten er blokkades zijn, direct melden, niet wachten."
+    },
+    {
+      "id": "m8",
+      "turn": 8,
+      "speakerId": "P003",
+      "speakerName": "Claire Lambert",
+      "text": "Ik ben gestart met het inventariseren voor mijn domein en lever mijn input binnen de afgesproken tijd aan bij Nora. Mocht er alsnog onduidelijkheid zijn over juridische eigenaarschap of documentatie, graag kort melden zodat ik dit direct kan toelichten en blokkades tijdig inzichtelijk zijn."
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "name": "BeNice Insights Communication Translator",
+  "short_name": "BeNice",
+  "description": "GitHub Pages proof of concept for profile-aware workplace communication using fictional CSV personas.",
+  "start_url": "./index.html#rewrite",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f5fa",
+  "theme_color": "#4b2a82",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Write a reply",
+      "url": "./index.html#rewrite",
+      "icons": [
+        {
+          "src": "./icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Ask Liv",
+      "url": "./index.html#coach",
+      "icons": [
+        {
+          "src": "./icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Test personas",
+      "url": "./index.html#profiles",
+      "icons": [
+        {
+          "src": "./icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}

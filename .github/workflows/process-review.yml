@@ -1,0 +1,48 @@
+name: Process Liz review issue
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  process:
+    if: contains(github.event.issue.labels.*.name, 'liz-review')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Convert issue into review dataset files
+        run: node scripts/process-review-issue.mjs
+      - name: Create dataset pull request
+        id: create_pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          BRANCH="liz/review-issue-${{ github.event.issue.number }}-${GITHUB_RUN_ID}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add data/reviews data/approved-examples
+          git commit -m "data: add Liz review from issue #${{ github.event.issue.number }}"
+          git push --set-upstream origin "$BRANCH"
+          PR_URL=$(gh pr create \
+            --base main \
+            --head "$BRANCH" \
+            --title "Teach Liz review #${{ github.event.issue.number }}" \
+            --body "Converts issue #${{ github.event.issue.number }} into a structured review record and, when supplied, a candidate approved rewrite. Merge only after human review.")
+          echo "pr_url=$PR_URL" >> "$GITHUB_OUTPUT"
+      - name: Link pull request from issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" --body "Dataset pull request created: ${{ steps.create_pr.outputs.pr_url }}"

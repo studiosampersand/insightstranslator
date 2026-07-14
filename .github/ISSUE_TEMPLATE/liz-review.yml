@@ -1,0 +1,29 @@
+name: Teach Liz review
+description: Submit a structured review for a generated conversation message
+labels: [liz-review]
+title: "Teach Liz review: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The easiest route is to use the **Submit as GitHub issue** button in the Teach Liz page. It pre-fills the JSON block below.
+  - type: textarea
+    id: review_json
+    attributes:
+      label: Review JSON
+      description: Paste the exported review JSON between the markers and code fence.
+      value: |
+        <!-- LIZ_REVIEW_JSON_START -->
+        ```json
+        {
+          "conversationId": "",
+          "messageId": "",
+          "status": "flagged",
+          "labels": [],
+          "reason": "",
+          "suggestedRewrite": ""
+        }
+        ```
+        <!-- LIZ_REVIEW_JSON_END -->
+    validations:
+      required: true

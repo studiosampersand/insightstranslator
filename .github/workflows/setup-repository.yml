@@ -1,0 +1,21 @@
+name: Set up Liz repository labels
+
+on:
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create or update labels
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh label create "liz-review" --color "7148C8" --description "Structured Teach Liz review" --force
+          gh label create "needs-rewrite" --color "C23A34" --description "Message needs a professional rewrite" --force
+          gh label create "approved-example" --color "8AAD1E" --description "Human-approved training example" --force

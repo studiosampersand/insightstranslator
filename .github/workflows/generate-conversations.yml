@@ -1,0 +1,99 @@
+name: Generate Liz conversation
+
+on:
+  workflow_dispatch:
+    inputs:
+      scenario_id:
+        description: Scenario ID from data/scenarios.json
+        required: true
+        default: project-delay
+        type: choice
+        options:
+          - project-delay
+          - missing-documentation
+          - capacity-pressure
+          - difficult-feedback
+      participant_ids:
+        description: Comma-separated persona IDs from data/personas.csv
+        required: true
+        default: P014,P003,P039
+        type: string
+      turns:
+        description: Number of messages (4-16)
+        required: true
+        default: '8'
+        type: string
+      tension:
+        description: Conversation tension
+        required: true
+        default: normaal
+        type: choice
+        options:
+          - laag
+          - normaal
+          - verhoogd
+          - hoog
+      language:
+        description: Conversation language
+        required: true
+        default: nl
+        type: choice
+        options: [nl, en, fr, de]
+      objective:
+        description: Optional specific outcome
+        required: false
+        type: string
+      title:
+        description: Optional conversation title
+        required: false
+        type: string
+      model:
+        description: GitHub Models model ID
+        required: true
+        default: openai/gpt-4.1
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+  models: read
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Generate turn-by-turn conversation with GitHub Models
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SCENARIO_ID: ${{ inputs.scenario_id }}
+          PARTICIPANT_IDS: ${{ inputs.participant_ids }}
+          TURNS: ${{ inputs.turns }}
+          TENSION: ${{ inputs.tension }}
+          LANGUAGE: ${{ inputs.language }}
+          OBJECTIVE: ${{ inputs.objective }}
+          TITLE: ${{ inputs.title }}
+          MODEL: ${{ inputs.model }}
+        run: node scripts/generate-conversation.mjs
+      - name: Create review pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          BRANCH="liz/generated-conversation-${GITHUB_RUN_ID}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add data/conversations
+          git commit -m "data: generate Liz training conversation"
+          git push --set-upstream origin "$BRANCH"
+          gh pr create \
+            --base main \
+            --head "$BRANCH" \
+            --title "Teach Liz: generated conversation" \
+            --body "Generated with GitHub Models from the manual workflow. Review the conversation JSON before merging. After merge it becomes visible in Teach Liz."

@@ -1,0 +1,38 @@
+name: Evaluate Liz examples
+
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: GitHub Models evaluator
+        required: true
+        default: openai/gpt-4.1
+        type: string
+      max_cases:
+        description: Maximum candidate examples to evaluate
+        required: true
+        default: '10'
+        type: string
+
+permissions:
+  contents: read
+  models: read
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Evaluate candidate examples
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MODEL: ${{ inputs.model }}
+          MAX_CASES: ${{ inputs.max_cases }}
+        run: node scripts/evaluate-liz.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: liz-evaluation-report
+          path: reports/latest-evaluation.json

@@ -1,0 +1,46 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build public site
+        run: |
+          set -e
+          rm -rf _site
+          mkdir -p _site/data/conversations _site/icons _site/docs
+          cp index.html app.js styles.css manifest.webmanifest service-worker.js .nojekyll config.js teach.html teach.js teach.css _site/
+          cp -R icons/. _site/icons/
+          cp data/personas.csv data/scenarios.json _site/data/
+          cp data/conversations/index.json _site/data/conversations/
+          find data/conversations -maxdepth 1 -name '*.json' ! -name 'index.json' -exec cp {} _site/data/conversations/ \;
+          cp README.md _site/docs/README.md
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

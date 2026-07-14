@@ -1,0 +1,29 @@
+{
+  "id": "issue-2-demo-project-delay-m1",
+  "sourceConversationId": "demo-project-delay",
+  "sourceMessageId": "m1",
+  "originalText": "Waarom is dit nog altijd niet rond? We hadden vrijdag afgesproken en ik wil dat dit vandaag eindelijk wordt opgelost.",
+  "labels": [
+    "negative",
+    "attacking",
+    "passive_aggressive",
+    "too_direct"
+  ],
+  "reason": "",
+  "approvedRewrite": "Hey, ik wou even inchecken naar de status van het project. Ik zag namelijk geen recente update en wil zeker zijn dat we de deadline kunnen bewaken.",
+  "speakerProfile": {
+    "id": "P014",
+    "name": "Lars De Smet",
+    "role": "Managing Director",
+    "cool_blue": 18,
+    "fiery_red": 62,
+    "sunshine_yellow": 12,
+    "earth_green": 8
+  },
+  "recipientProfile": null,
+  "adaptationMode": "common_ground",
+  "status": "candidate",
+  "reviewedBy": "studiosampersand",
+  "sourceIssue": "https://github.com/studiosampersand/insightstranslator/issues/2",
+  "createdAt": "2026-07-14T12:08:28.596Z"
+}

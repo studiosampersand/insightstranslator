@@ -1,0 +1,99 @@
+{
+  "id": "20260714t123657z-project-loopt-vertraging-op",
+  "title": "Project loopt vertraging op · Lars, Claire, Nora",
+  "scenarioId": "project-delay",
+  "scenario": "Een belangrijk intern project loopt een week achter. Er ontbreken technische documentatie, duidelijke eigenaars en een haalbare planning.",
+  "objective": "Maak blokkeringen zichtbaar, verdeel acties en kom tot een haalbare afspraak.",
+  "language": "nl",
+  "tension": "normaal",
+  "generatedAt": "2026-07-14T12:36:57.896Z",
+  "generatedBy": "github-models",
+  "model": "openai/gpt-4.1",
+  "participants": [
+    {
+      "id": "P014",
+      "name": "Lars De Smet",
+      "role": "Managing Director",
+      "cool_blue": 18,
+      "fiery_red": 62,
+      "sunshine_yellow": 12,
+      "earth_green": 8
+    },
+    {
+      "id": "P003",
+      "name": "Claire Lambert",
+      "role": "Legal Counsel",
+      "cool_blue": 66,
+      "fiery_red": 12,
+      "sunshine_yellow": 7,
+      "earth_green": 15
+    },
+    {
+      "id": "P039",
+      "name": "Nora De Meyer",
+      "role": "People Partner",
+      "cool_blue": 12,
+      "fiery_red": 10,
+      "sunshine_yellow": 14,
+      "earth_green": 64
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "turn": 1,
+      "speakerId": "P014",
+      "speakerName": "Lars De Smet",
+      "text": "We lopen een week achter door ontbrekende technische documentatie, geen duidelijke eigenaars en een vage planning. Ik wil vandaag concrete acties: wie pakt welk onderdeel op, wanneer is de documentatie klaar, en wat is een realistische deadline voor het project? Geef binnen een uur jullie voorstel."
+    },
+    {
+      "id": "m2",
+      "turn": 2,
+      "speakerId": "P003",
+      "speakerName": "Claire Lambert",
+      "text": "Om de blokkades helder te krijgen: graag een overzicht van welke technische documentatie precies ontbreekt en wie momenteel verantwoordelijk wordt geacht. Vanuit juridisch perspectief is het belangrijk dat eigenaarschap en deadlines expliciet worden vastgelegd. Ik neem het opstellen van een concept-overzicht van rollen en verantwoordelijkheden op me en lever dat binnen 24 uur aan, zodat we dit kunnen afstemmen met het team en het project juridisch geborgd is."
+    },
+    {
+      "id": "m3",
+      "turn": 3,
+      "speakerId": "P039",
+      "speakerName": "Nora De Meyer",
+      "text": "Dank je wel Claire, fijn dat je het overzicht met rollen en verantwoordelijkheden oppakt. Ik stel voor dat we parallel alvast samen inventariseren welke technische documentatie nu ontbreekt. Lars, kun jij aangeven waar de grootste hiaten zitten? Ik ondersteun graag bij het verzamelen van input uit het team, zodat we samen snel tot een realistische planning komen."
+    },
+    {
+      "id": "m4",
+      "turn": 4,
+      "speakerId": "P014",
+      "speakerName": "Lars De Smet",
+      "text": "Prima, Claire neemt het overzicht van rollen en verantwoordelijkheden op zich. Nora, jouw voorstel om samen ontbrekende documentatie te inventariseren is goed—ik verwacht van jou vóór morgenochtend een lijst met de grootste hiaten, op basis van input uit het team. Daarna bepalen we deadlines per onderdeel. Ik wil uiterlijk morgenmiddag een planning die realistisch en haalbaar is."
+    },
+    {
+      "id": "m5",
+      "turn": 5,
+      "speakerId": "P003",
+      "speakerName": "Claire Lambert",
+      "text": "Dat is duidelijk, Lars. Ik zal mijn concept-overzicht van rollen en verantwoordelijkheden afstemmen op de hiatenlijst die Nora aanlevert, zodat eigenaarschap per ontbrekend document direct helder is. Zodra Nora haar inventarisatie deelt, werk ik het overzicht bij en stuur het uiterlijk morgenochtend rond voor feedback."
+    },
+    {
+      "id": "m6",
+      "turn": 6,
+      "speakerId": "P039",
+      "speakerName": "Nora De Meyer",
+      "text": "Dank voor de heldere afspraken. Ik neem vandaag contact op met de technische teamleden om input te verzamelen over de ontbrekende documentatie en lever uiterlijk morgenochtend de hiatenlijst aan. Daarna stem ik graag af met jullie beiden over de verdere planning en eigenaarschap, zodat we samen tot een haalbare aanpak komen."
+    },
+    {
+      "id": "m7",
+      "turn": 7,
+      "speakerId": "P014",
+      "speakerName": "Lars De Smet",
+      "text": "Goed, Nora en Claire: jullie deadlines staan vast. Morgenmiddag verwacht ik een definitieve planning met eigenaars per onderdeel. Geen uitstel; we lopen nu al achter. Zorg dat alles helder en concreet is, zodat we direct kunnen doorpakken."
+    },
+    {
+      "id": "m8",
+      "turn": 8,
+      "speakerId": "P003",
+      "speakerName": "Claire Lambert",
+      "text": "Ik bevestig dat mijn overzicht van rollen en verantwoordelijkheden morgenochtend gereed is, met eigenaars per onderdeel gekoppeld aan Nora’s hiatenlijst. Dit document zal duidelijkheid bieden over wie waarvoor verantwoordelijk is, inclusief concrete deadlines. Zodra jullie feedback geven, verwerk ik die direct zodat we morgenmiddag een definitieve planning kunnen opleveren."
+    }
+  ]
+}

@@ -1,21 +1,23 @@
-# Prototype scope and boundaries
+# Prototype scope
 
-## Included
+## In scope
 
-The standalone version demonstrates interface design, CSV profile selection, common-ground calculations, multilingual presentation, offline installation and deterministic sample rewrites.
+- Professional rewrite of the actual typed draft.
+- Preservation of concrete content wherever the browser rules can identify it.
+- Sender/recipient style blending using four colour-energy percentages.
+- Separate, profile-aware advice before sending.
+- Suggestions to add documentation, URLs, owners, deadlines, input, support or team impact.
+- Direct-conversation recommendation for sensitive or complex subjects.
+- Ask Liv service routing demo with actionable buttons.
+- Public GitHub Pages deployment using fictional profiles only.
 
-## Deliberately excluded
+## Out of scope for this public proof of concept
 
-- Azure deployment
-- Entra SSO and MFA
-- Microsoft Graph or SharePoint access
-- Teams and Outlook add-ins
-- HaloPSA integration
-- Internal AI-agent connection
-- Screenshot OCR or multimodal interpretation
-- Message sending or insertion
-- HR reporting, sentiment scoring or employee monitoring
-
-## Production migration
-
-The interface and CSV schema are designed so that the local profile loader can later be replaced by an authenticated internal API. The deterministic rewrite function can likewise be replaced by the organisation's internal agent while the user workflow remains largely unchanged.
+- General-purpose AI language understanding.
+- OCR or screenshot interpretation.
+- Real employee profiles or manager hierarchy.
+- Authentication and access control.
+- Automatic Teams or Outlook insertion.
+- HaloPSA API ticket creation.
+- Real email recipients or Teams identities.
+- Monitoring, sentiment scoring or reporting to HR.

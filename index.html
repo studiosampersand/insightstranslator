@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#4b2a82">
-  <meta name="description" content="BeNice management proof of concept: personality-aware workplace communication using fictional CSV profiles in the browser.">
+  <meta name="description" content="BeNice management proof of concept: context-preserving professional rewrites adapted to fictional Insights colour-energy profiles.">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
@@ -56,7 +56,7 @@
     </div>
 
     <nav class="mode-tabs" aria-label="BeNice mode">
-      <button class="active" data-mode="rewrite"><span>↗</span><strong data-i18n="tabRewrite">Write a reply</strong><small data-i18n="tabRewriteSub">Profile-aware rewrite</small></button>
+      <button class="active" data-mode="rewrite"><span>↗</span><strong data-i18n="tabRewrite">Write a reply</strong><small data-i18n="tabRewriteSub">Your text, professionally rewritten</small></button>
       <button data-mode="coach"><span>?</span><strong data-i18n="tabCoach">Ask Liv</strong><small data-i18n="tabCoachSub">Internal routing demo</small></button>
       <button data-mode="profiles"><span>◎</span><strong data-i18n="tabProfiles">Test personas</strong><small data-i18n="tabProfilesSub">CSV profiles and import</small></button>
     </nav>
@@ -153,7 +153,7 @@
         </aside>
 
         <article class="card result-card">
-          <div class="card-heading"><div><span class="step done">03</span><div><h2 data-i18n="resultTitle">Suggested reply</h2><p data-i18n="resultSub">Review and edit before using it.</p></div></div><button id="copyBtn" class="link-button" type="button" data-i18n="copy">Copy</button></div>
+          <div class="card-heading"><div><span class="step done">03</span><div><h2 data-i18n="resultTitle">Professional rewrite</h2><p data-i18n="resultSub">Your meaning and concrete details, rewritten for the selected communication style.</p></div></div><button id="copyBtn" class="link-button" type="button" data-i18n="copy">Copy</button></div>
           <div id="emptyResult" class="empty-state"><span>♥</span><strong data-i18n="emptyTitle">Liv is ready.</strong><p data-i18n="emptySub">Choose a quick demo or enter your own text.</p></div>
           <div id="resultContent" class="hidden">
             <div id="styleSummary" class="style-summary"></div>
@@ -178,6 +178,8 @@
           <h2 data-i18n="coachTitle">Ask Liv where to go next.</h2>
           <p data-i18n="coachText">This local demo routes a question to a likely internal contact. It does not diagnose, monitor or report people.</p>
           <div class="coach-prompts">
+            <button type="button" data-coach="it" data-i18n="coachPromptIt">My laptop, account or infrastructure is not working.</button>
+            <button type="button" data-coach="hr" data-i18n="coachPromptHr">I have an HR or company-car question.</button>
             <button type="button" data-coach="capacity" data-i18n="coachPrompt1">My project needs more time or capacity.</button>
             <button type="button" data-coach="conflict" data-i18n="coachPrompt2">A collaboration is becoming difficult.</button>
             <button type="button" data-coach="privacy" data-i18n="coachPrompt3">I have a privacy or security question.</button>

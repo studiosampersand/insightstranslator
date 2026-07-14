@@ -1,67 +1,35 @@
-# Ten-minute management demonstration
+# Management demo script — 8 to 10 minutes
 
-## 1. Position the product — 60 seconds
+## 1. Explain the concept
 
-Open the GitHub Pages link and explain:
+BeNice improves the wording of the user’s real draft and then adapts structure, detail and framing to the sender and recipient’s colour-energy mix. Common ground is the default.
 
-> BeNice is an internal communication assistant concept. It preserves the sender’s professional voice while adapting structure, detail and framing to the recipient’s full four-colour profile.
+## 2. Demonstrate a real rewrite
 
-Point out **50 fictional test personas**, **CSV import** and **Works offline**. Explain that the public demo has no backend and sends no message data anywhere.
+Use this draft:
 
-## 2. Show the profile source — 90 seconds
+> Ik heb nu al drie keer gevraagd wanneer die documenten klaar zijn en niemand antwoordt. Zo kunnen wij toch niet werken?
 
-Open **Test personas**.
+Select a dominant Cool Blue recipient. Liv should preserve the document request, remove the frustration and ask for a clear next step and timing. Point out the separate recommendation to attach the actual documentation or project URL.
 
-- Show the 50 fictional profiles.
-- Filter by department.
-- Explain that every row contains a mix of all four colour energies.
-- Show that profiles can later be replaced through an approved CSV or internal profile source.
+## 3. Compare dominant recipients
 
-## 3. Demonstrate dominant colour and mixed communication — 3 minutes
+- Fiery Red: action and timing first.
+- Sunshine Yellow: a brief personal check-in and invitation for ideas.
+- Earth Green: calm wording and alignment/support advice.
+- Cool Blue: factual structure and documentation advice.
 
-Open **Write a reply** and choose contrasting profiles.
+## 4. Demonstrate a sensitive topic
 
-Use **Documents** and compare recipients:
+Choose “Sensitive conflict”. Show that Liv recommends a Teams or physical meeting and still provides the written fallback underneath.
 
-- Cool Blue: exact information, format, deadline and a prompt to add documentation or a URL.
-- Fiery Red: requested action, owner and deadline first.
-- Sunshine Yellow: involvement and invitation to contribute.
-- Earth Green: alignment, support and impact on the team.
+## 5. Demonstrate Ask Liv
 
-Generate the reply and show:
+- Enter a laptop/VPN problem: Liv routes to HaloPSA and shows an “Open HaloPSA” button.
+- Enter an HR or company-car question: Liv routes to Maarten and shows Teams/mail actions.
+- Mention Salesforce or SFMC: Liv routes to CRM.
+- Mention DMS or document management: Liv routes to DMS.
 
-1. The dominant and secondary energy explanation.
-2. The complete message-recipe percentages.
-3. The actual mixed reply.
-4. The **Improve before sending** panel.
+## 6. Close with the production vision
 
-## 4. Show common ground — 2 minutes
-
-Choose a sender and recipient with a large style distance. Compare:
-
-1. Common ground
-2. Closer to them
-3. Closer to me
-4. Neutral
-
-Explain that the app does not simply imitate a colour. It creates a professional bridge between both profiles.
-
-## 5. Show project value and safety — 2 minutes
-
-Use **Project capacity** to reframe frustration into scope, priorities, capacity and timing.
-
-Then use **Sensitive conflict**. Show that BeNice recommends a direct conversation while still supplying a written fallback.
-
-## 6. Show the coach direction — 60 seconds
-
-Open **Ask Liv** and run the project-capacity or privacy scenario. Explain that a production version would route people through a controlled internal directory without hidden HR monitoring.
-
-## Proposed decision
-
-Ask management to approve a small internal pilot:
-
-- confirm the product and governance owners;
-- confirm Insights Discovery terminology and licence boundaries;
-- test with 5–10 volunteers and approved profiles;
-- connect the organisation’s internal agent only after the communication logic is approved;
-- then proceed to Microsoft Teams and Azure integration.
+The public demo is browser-only and uses fictional profiles. The internal version will use SSO, the approved directory, real manager/service ownership and the organisation’s own internal agent.

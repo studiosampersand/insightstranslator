@@ -38,3 +38,6 @@ https://<your-github-username-or-organisation>.github.io/insightstranslator/
 ## Important
 
 This public proof of concept includes only fictional personas. Do not upload real employee profiles or confidential messages to a public GitHub repository.
+
+
+After replacing an older build, hard-refresh once or close and reopen the installed PWA so the v0.7.0 service worker replaces the old cached files.

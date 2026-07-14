@@ -1,25 +1,21 @@
-# Validation report
+# Validation — v0.7.0
 
-Validated on 2026-07-14.
+Validated locally:
 
-## Passed
+- JavaScript syntax passes `node --check app.js`.
+- `tests/validate.mjs` passes.
+- Exactly 50 fictional CSV profiles load.
+- Every profile totals 100%.
+- Every profile has one dominant colour energy above 50%.
+- Professional rewrite preserves concrete names, version numbers, dates and document references in the validation example.
+- Aggressive terms such as “eindelijk” are removed from the generated rewrite.
+- A Sunshine Yellow recipient receives a personal opener in a non-sensitive scenario.
+- Conflict and capacity topics trigger direct-conversation guidance.
+- HaloPSA, HR/fleet, CRM, DMS, project, privacy and wellbeing routing definitions are included.
+- Service worker uses cache version `benice-github-pages-v0.7.0`.
 
-- JavaScript syntax check with Node.js
-- All DOM IDs referenced by `app.js` exist in `index.html`
-- All local HTML asset references exist
-- CSV parser accepts the bundled file
-- Exactly 50 fictional profiles are present
-- Every profile’s four percentages total 100
-- Common-ground, recipient-weighted, sender-weighted and neutral blends total 100
-- Dominant-colour ranking and topic detection tests
-- Dutch language-detection test
-- English, Dutch, French and German message lines are included
-- GitHub Pages root structure and `.nojekyll` are present
-- No external JavaScript, font, API or analytics dependency
-- No real employee data is included
+Not validated against a production environment:
 
-Run the repeatable logic checks with:
-
-```bash
-node tests/validate.mjs
-```
+- GitHub Pages publication in the user’s repository.
+- Real Teams deep links or real employee email addresses.
+- Internal directory, Azure, SharePoint, HaloPSA API or internal-agent integrations.

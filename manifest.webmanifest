@@ -1,7 +1,7 @@
 {
   "name": "BeNice Insights Communication Translator",
   "short_name": "BeNice",
-  "description": "GitHub Pages proof of concept for profile-aware workplace communication using fictional CSV personas.",
+  "description": "GitHub Pages proof of concept that professionally rewrites entered text and adapts it to fictional Insights colour-energy personas.",
   "start_url": "./index.html#rewrite",
   "scope": "./",
   "display": "standalone",

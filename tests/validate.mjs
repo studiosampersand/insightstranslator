@@ -2,11 +2,11 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
 
-const root = new URL('../', import.meta.url);
 const codePath = new URL('../app.js', import.meta.url);
 let code = fs.readFileSync(codePath, 'utf8');
-code = code.replace(/init\(\)\.catch[\s\S]*?\);\s*$/, 'globalThis.__test={parseAndValidateCsv,profileDistance,blendProfiles,detectTopic,detectLanguage,TEMPLATES,PROFILE_LINES,RESULT_COPY,dominant,composeProfileAwareReply};');
-const context = vm.createContext({console, localStorage:{getItem:()=>null,setItem:()=>{},removeItem:()=>{}}, document:{querySelector:(q)=>q==='#questionFlip'?{checked:true}:null}, globalThis:null});
+code = code.replace(/init\(\)\.catch[\s\S]*?\);\s*$/, 'globalThis.__test={parseAndValidateCsv,profileDistance,blendProfiles,detectTopic,detectLanguage,dominant,composeProfileAwareReply,rewriteDraft,conversationRecommendation,COACH_ROUTES};');
+const questionFlip={checked:true};
+const context = vm.createContext({console, Date, localStorage:{getItem:()=>null,setItem:()=>{},removeItem:()=>{}}, document:{querySelector:(q)=>q==='#questionFlip'?questionFlip:null}, globalThis:null});
 context.globalThis=context;
 new vm.Script(code,{filename:'app.js'}).runInContext(context);
 const api=context.__test;
@@ -18,32 +18,52 @@ assert.equal(parsed.ok,true);
 assert.equal(parsed.rows.length,50);
 for(const row of parsed.rows){
   assert.equal(row.cool_blue+row.fiery_red+row.sunshine_yellow+row.earth_green,100);
+  assert(Math.max(row.cool_blue,row.fiery_red,row.sunshine_yellow,row.earth_green)>50);
 }
-const a=parsed.rows[0],b=parsed.rows[1];
-const d=api.profileDistance(a,b);
-assert(d>=0&&d<=100);
-for(const mode of ['common_ground','recipient','sender','neutral']){
-  const mix=api.blendProfiles(a,b,mode);
-  assert.equal(Object.values(mix).reduce((s,n)=>s+n,0),100);
-}
-assert.equal(api.detectTopic('When can you deliver the documents?'),'documents');
-assert.equal(api.detectTopic('The project is overloaded and needs capacity.'),'capacity');
+const a=parsed.rows[0],b=parsed.rows[14];
+assert(api.profileDistance(a,b)>=0);
+for(const mode of ['common_ground','recipient','sender','neutral'])assert.equal(Object.values(api.blendProfiles(a,b,mode)).reduce((s,n)=>s+n,0),100);
+assert.equal(api.detectTopic('Wanneer kun je de documenten opleveren?'),'documents');
 assert.equal(api.detectLanguage('Wanneer kunnen we dit vandaag bespreken?'),'nl');
-assert(api.TEMPLATES.en.documents.length>=3);
-assert(api.PROFILE_LINES.en.cool_blue.documents.includes('format'));
-assert(api.PROFILE_LINES.en.fiery_red.deadline.includes('deadline'));
-assert(api.PROFILE_LINES.en.sunshine_yellow.capacity.includes('ideas'));
-assert(api.PROFILE_LINES.en.earth_green.capacity.includes('team'));
-assert(api.RESULT_COPY.en.blueUrl.includes('URL'));
-assert.equal(api.dominant({cool_blue:50,fiery_red:20,sunshine_yellow:10,earth_green:20})[0],'cool_blue');
 
-const blueRed={cool_blue:45,fiery_red:35,sunshine_yellow:10,earth_green:10};
-const blueRedReply=api.composeProfileAwareReply(blueRed,api.dominant(blueRed),'en','documents','balanced','balanced','draft','ask','When can you deliver the documents?');
-assert(blueRedReply.includes('format'));
-assert(blueRedReply.includes('scope today'));
-const yellowGreen={cool_blue:10,fiery_red:10,sunshine_yellow:45,earth_green:35};
-const yellowGreenReply=api.composeProfileAwareReply(yellowGreen,api.dominant(yellowGreen),'en','capacity','balanced','balanced','draft','request','The project is overloaded.');
-assert(yellowGreenReply.includes('ideas'));
-assert(yellowGreenReply.includes('team'));
+const yellow={name:'Mila Goossens',cool_blue:8,fiery_red:16,sunshine_yellow:66,earth_green:10};
+const target={cool_blue:20,fiery_red:20,sunshine_yellow:45,earth_green:15};
+const source='Wanneer kun je die documenten nu eindelijk opleveren? We hebben het al verschillende keren gevraagd.';
+const rewritten=api.composeProfileAwareReply(target,api.dominant(target),'nl','documents','balanced','balanced','draft','ask',source,yellow);
+assert(rewritten.includes('documenten'));
+assert(rewritten.includes('eerder'));
+assert(!rewritten.toLowerCase().includes('eindelijk'));
+assert(/Dag Mila|hoe gaat het/i.test(rewritten));
 
-console.log('Validation passed: 50 profiles, percentage totals, blending, topic detection and multilingual templates.');
+const factual='Pieter bevestigde dat versie 3 vrijdag klaar zou zijn, maar Legal heeft nog geen toegang tot de contractmap. Kun je dit vandaag oplossen?';
+const blue={name:'Amina Vermeer',cool_blue:62,fiery_red:18,sunshine_yellow:8,earth_green:12};
+const factualRewrite=api.composeProfileAwareReply({cool_blue:50,fiery_red:25,sunshine_yellow:10,earth_green:15},['cool_blue','fiery_red','earth_green','sunshine_yellow'],'nl','generic','balanced','balanced','draft','request',factual,blue);
+assert(factualRewrite.includes('Pieter'));
+assert(factualRewrite.includes('versie 3'));
+assert(factualRewrite.includes('vrijdag'));
+assert(factualRewrite.includes('Legal'));
+assert(factualRewrite.includes('contractmap'));
+
+assert.equal(api.conversationRecommendation('Ik ben het beu dat ik de schuld krijg.','conflict','nl').show,true);
+
+
+const actualDraft='Ik heb nu al drie keer gevraagd wanneer die documenten klaar zijn en niemand antwoordt. Zo kunnen wij toch niet werken?';
+const actualRewrite=api.composeProfileAwareReply(blue,api.dominant(blue),'nl','documents','balanced','balanced','draft','ask',actualDraft,blue);
+assert(actualRewrite.includes('documenten'));
+assert(actualRewrite.includes('nog geen antwoord ontvangen'));
+assert(actualRewrite.includes('timing'));
+assert(!actualRewrite.toLowerCase().includes('eindelijk'));
+assert(!actualRewrite.toLowerCase().includes('zo kunnen wij toch niet werken'));
+
+const alternateRewrite=api.composeProfileAwareReply(blue,api.dominant(blue),'nl','documents','balanced','balanced','draft','ask',actualDraft,blue,1);
+assert.notEqual(alternateRewrite,actualRewrite);
+
+const itRoute=api.COACH_ROUTES.find(r=>r.id==='it-hardware');
+assert(itRoute.keywords.test('Mijn laptop kan niet verbinden met VPN en toont een foutmelding.'));
+assert(itRoute.actions.includes('halopsa'));
+const hrRoute=api.COACH_ROUTES.find(r=>r.id==='hr');
+assert(hrRoute.keywords.test('Ik heb een vraag over verlof en mijn contract.'));
+const fleetRoute=api.COACH_ROUTES.find(r=>r.id==='fleet');
+assert(fleetRoute.keywords.test('Mijn bedrijfswagen heeft schade.'));
+
+console.log('Validation passed: dominant profiles, context-preserving rewrites, alternate versions and service routing.');

@@ -1,21 +1,25 @@
-# Validation — v0.7.0
+# Validation report · v0.8.0
 
-Validated locally:
+Validated on 14 July 2026.
 
-- JavaScript syntax passes `node --check app.js`.
-- `tests/validate.mjs` passes.
-- Exactly 50 fictional CSV profiles load.
+## Passed
+
+- `app.js` passes `node --check`.
+- Required GitHub Pages and PWA files are present.
+- CSV contains exactly 50 fictional personas.
 - Every profile totals 100%.
-- Every profile has one dominant colour energy above 50%.
-- Professional rewrite preserves concrete names, version numbers, dates and document references in the validation example.
-- Aggressive terms such as “eindelijk” are removed from the generated rewrite.
-- A Sunshine Yellow recipient receives a personal opener in a non-sensitive scenario.
-- Conflict and capacity topics trigger direct-conversation guidance.
-- HaloPSA, HR/fleet, CRM, DMS, project, privacy and wellbeing routing definitions are included.
-- Service worker uses cache version `benice-github-pages-v0.7.0`.
+- Every profile has one dominant energy above 50%.
+- Desktop browser smoke test completed without console or page errors.
+- Project-delay input produced a transformed reply that preserved `project` and `vrijdag`.
+- Profile meter widths rendered visibly and proportionally; the first test profile rendered approximately 62%, 18%, 8% and 12%.
+- Desktop page had no horizontal overflow at 1440 px.
+- Mobile page had no horizontal overflow at 390 px.
+- Sunshine Yellow test added a personal opener and invitation to contribute.
+- Sensitive-conflict test displayed a direct-conversation recommendation.
+- Service-worker cache version is `insightstranslator-v0.8.0`, which removes previous caches on activation.
 
-Not validated against a production environment:
+## Prototype limitations
 
-- GitHub Pages publication in the user’s repository.
-- Real Teams deep links or real employee email addresses.
-- Internal directory, Azure, SharePoint, HaloPSA API or internal-agent integrations.
+- Screenshot is preview-only; no OCR is claimed.
+- The rewrite engine is deterministic and browser-based. It is substantially more contextual than canned templates, but the future internal agent remains necessary for unrestricted natural-language quality.
+- Teams and email buttons in the public demo open generic Microsoft entry points because employee identifiers are intentionally not published.

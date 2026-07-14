@@ -1,12 +1,17 @@
-# Publish BeNice on GitHub Pages
+# Upload to the `insightstranslator` GitHub repository
 
-Repository: `insightstranslator`
+1. Extract the ZIP.
+2. Open your GitHub repository `insightstranslator`.
+3. Delete or overwrite the previous root files.
+4. Upload all files and folders from the extracted package. Do not upload the ZIP itself and do not add an extra containing folder.
+5. Commit to `main`.
+6. Go to **Settings → Pages**.
+7. Choose **Deploy from a branch**.
+8. Select branch `main` and folder `/(root)`.
+9. Save.
+10. After deployment, open the site once with a hard refresh. The new service worker uses cache version `v0.8.0` and removes older caches.
 
-## Upload
-
-Upload the **contents of this folder** to the root of the repository. Do not upload the ZIP as one file.
-
-The root of the repository should directly contain:
+Expected repository root:
 
 ```text
 index.html
@@ -18,26 +23,7 @@ service-worker.js
 data/
 icons/
 docs/
+tests/
 ```
 
-## Enable GitHub Pages
-
-1. Open the repository on GitHub.
-2. Go to **Settings → Pages**.
-3. Under **Build and deployment**, choose **Deploy from a branch**.
-4. Select branch **main** and folder **/(root)**.
-5. Save.
-6. Wait for the deployment to finish.
-
-The expected URL is:
-
-```text
-https://<your-github-username-or-organisation>.github.io/insightstranslator/
-```
-
-## Important
-
-This public proof of concept includes only fictional personas. Do not upload real employee profiles or confidential messages to a public GitHub repository.
-
-
-After replacing an older build, hard-refresh once or close and reopen the installed PWA so the v0.7.0 service worker replaces the old cached files.
+Only fictional test profiles are included because a GitHub Pages site is publicly accessible.

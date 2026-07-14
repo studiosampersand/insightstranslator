@@ -1,225 +1,237 @@
 <!doctype html>
-<html lang="en">
+<html lang="nl">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#4b2a82">
-  <meta name="description" content="BeNice management proof of concept: context-preserving professional rewrites adapted to fictional Insights colour-energy profiles.">
+  <meta name="description" content="BeNice alpha prototype: professionele tekstverbetering afgestemd op Insights Discovery kleurenergieën.">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css">
-  <title>BeNice · Insights communication translator</title>
+  <link rel="stylesheet" href="./styles.css?v=0.8.0">
+  <title>BeNice · Insights Translator alpha</title>
 </head>
 <body>
   <div class="brand-ribbon" aria-hidden="true"></div>
-  <header class="topbar">
+  <header class="app-header">
     <a class="brand" href="#rewrite" aria-label="BeNice home">
-      <span class="brand-mark" aria-hidden="true"><span>♥</span></span>
-      <span class="brand-copy"><strong>BeNice</strong><small>Insights communication translator</small></span>
+      <span class="brand-mark" aria-hidden="true">♥</span>
+      <span><strong>BeNice</strong><small>Insights Translator · alpha</small></span>
     </a>
-    <div class="top-actions">
-      <span class="local-chip"><span></span> Browser-only demo</span>
-      <select id="uiLanguage" aria-label="Interface language">
-        <option value="en">EN</option>
+
+    <nav class="main-nav" aria-label="Hoofdnavigatie">
+      <button class="active" type="button" data-mode="rewrite" data-i18n="navRewrite">Herschrijven</button>
+      <button type="button" data-mode="coach" data-i18n="navCoach">Ask Liv</button>
+      <button type="button" data-mode="profiles" data-i18n="navProfiles">Testprofielen</button>
+    </nav>
+
+    <div class="header-actions">
+      <span class="local-badge"><i></i><span data-i18n="localDemo">Lokale demo</span></span>
+      <select id="uiLanguage" aria-label="Interfacetaal">
         <option value="nl">NL</option>
+        <option value="en">EN</option>
         <option value="fr">FR</option>
         <option value="de">DE</option>
       </select>
-      <button id="installBtn" class="icon-button hidden" type="button" title="Install app" aria-label="Install app">↓</button>
+      <button id="installBtn" class="square-button hidden" type="button" title="Installeer app" aria-label="Installeer app">↓</button>
     </div>
   </header>
 
-  <main class="page-shell">
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow" data-i18n="eyebrow">Personal communication. Professional common ground.</p>
-        <h1 data-i18n-html="heroTitle">Write in your voice.<br><span>Reach the other person better.</span></h1>
-        <p data-i18n="heroText">Liv adapts structure, tone and detail using two local colour-energy profiles. Nothing leaves this device.</p>
-        <div class="hero-pills">
-          <span data-i18n="pill1">50 fictional test personas</span>
-          <span data-i18n="pill2">CSV import</span>
-          <span data-i18n="pill3">Works offline</span>
+  <main class="app-shell">
+    <section id="rewriteMode" class="mode-panel">
+      <div class="page-intro">
+        <div>
+          <p class="eyebrow" data-i18n="eyebrow">Jouw boodschap. Professioneel afgestemd.</p>
+          <h1 data-i18n="title">Van ruwe tekst naar een bruikbaar antwoord.</h1>
+          <p data-i18n="subtitle">Liv behoudt de inhoud, verzacht onnodige frictie en past structuur, detail en toon aan de ontvanger aan.</p>
+        </div>
+        <div class="prototype-note">
+          <strong data-i18n="pocTitle">Alpha proof of concept</strong>
+          <span data-i18n="pocText">Browser-only, fictieve profielen en een lokale regelengine. Er wordt niets verzonden.</span>
         </div>
       </div>
-      <div class="energy-compass" aria-label="Colour energies">
-        <div class="energy blue"><strong>Cool Blue</strong><small data-i18n="blueShort">precise</small></div>
-        <div class="energy red"><strong>Fiery Red</strong><small data-i18n="redShort">decisive</small></div>
-        <div class="energy green"><strong>Earth Green</strong><small data-i18n="greenShort">considerate</small></div>
-        <div class="energy yellow"><strong>Sunshine Yellow</strong><small data-i18n="yellowShort">sociable</small></div>
-        <div class="compass-core"><span>common</span><strong>ground</strong></div>
-      </div>
-    </section>
 
-    <div class="poc-banner">
-      <strong data-i18n="pocTitle">Management demo build</strong>
-      <span data-i18n="pocText">This GitHub Pages proof of concept uses a deterministic browser engine—not AI—and 50 fictional profiles. No message is sent to a backend.</span>
-    </div>
-
-    <nav class="mode-tabs" aria-label="BeNice mode">
-      <button class="active" data-mode="rewrite"><span>↗</span><strong data-i18n="tabRewrite">Write a reply</strong><small data-i18n="tabRewriteSub">Your text, professionally rewritten</small></button>
-      <button data-mode="coach"><span>?</span><strong data-i18n="tabCoach">Ask Liv</strong><small data-i18n="tabCoachSub">Internal routing demo</small></button>
-      <button data-mode="profiles"><span>◎</span><strong data-i18n="tabProfiles">Test personas</strong><small data-i18n="tabProfilesSub">CSV profiles and import</small></button>
-    </nav>
-
-    <section id="rewriteMode" class="mode-panel">
-      <div class="demo-scenarios">
-        <span data-i18n="demoLabel">Quick demo:</span>
-        <button type="button" data-scenario="documents" data-i18n="demoDocuments">Documents</button>
-        <button type="button" data-scenario="deadline" data-i18n="demoDeadline">Missed deadline</button>
-        <button type="button" data-scenario="capacity" data-i18n="demoCapacity">Project capacity</button>
-        <button type="button" data-scenario="feedback" data-i18n="demoFeedback">Difficult feedback</button>
-        <button type="button" data-scenario="conflict" data-i18n="demoConflict">Sensitive conflict</button>
+      <div class="quick-demos" aria-label="Demo voorbeelden">
+        <span data-i18n="quickDemo">Probeer:</span>
+        <button type="button" data-scenario="project" data-i18n="demoProject">Project loopt uit</button>
+        <button type="button" data-scenario="documents" data-i18n="demoDocuments">Documenten ontbreken</button>
+        <button type="button" data-scenario="capacity" data-i18n="demoCapacity">Te weinig capaciteit</button>
+        <button type="button" data-scenario="feedback" data-i18n="demoFeedback">Moeilijke feedback</button>
+        <button type="button" data-scenario="conflict" data-i18n="demoConflict">Gevoelig conflict</button>
       </div>
 
-      <div class="workspace-grid">
-        <article class="card input-card">
-          <div class="card-heading">
-            <div><span class="step">01</span><div><h2 data-i18n="sourceTitle">What do you want to rewrite?</h2><p data-i18n="sourceSub">Use a rough draft or an incoming message.</p></div></div>
-            <button id="clearBtn" class="link-button" type="button" data-i18n="clear">Clear</button>
+      <section class="translator-workspace" aria-label="Tekst vertalen">
+        <article class="message-panel input-panel">
+          <div class="panel-head">
+            <div class="step-number">1</div>
+            <div>
+              <h2 data-i18n="inputTitle">Jouw tekst</h2>
+              <p data-i18n="inputSub">Schrijf zoals je het denkt. Liv maakt er een professionele versie van.</p>
+            </div>
+            <button id="clearBtn" class="text-button" type="button" data-i18n="clear">Wissen</button>
           </div>
 
           <div class="segmented" data-choice="inputMode">
-            <button class="active" data-value="draft" type="button" data-i18n="roughDraft">My rough reply</button>
-            <button data-value="incoming" type="button" data-i18n="incomingMessage">Message I received</button>
+            <button class="active" type="button" data-value="draft" data-i18n="roughReply">Mijn ruwe antwoord</button>
+            <button type="button" data-value="incoming" data-i18n="receivedMessage">Bericht dat ik kreeg</button>
           </div>
-          <textarea id="sourceText" maxlength="8000" data-i18n-placeholder="sourcePlaceholder" placeholder="Type the reply you would like BeNice to make clearer and more professional…"></textarea>
-          <div class="input-footer"><span id="charCount">0 / 8000</span><span data-i18n="notSent">Nothing is sent automatically</span></div>
 
-          <div class="upload-zone">
+          <textarea id="sourceText" maxlength="8000" data-i18n-placeholder="sourcePlaceholder" placeholder="Bijvoorbeeld: waarom is het project nog niet af? Dat duurt nu al zo lang. Ik wil graag dat we dit tegen vrijdag afronden."></textarea>
+          <div class="textarea-meta"><span id="charCount">0 / 8000</span><span data-i18n="nothingSent">Niets wordt automatisch verstuurd</span></div>
+
+          <div class="screenshot-zone">
             <label>
               <input id="imageInput" type="file" accept="image/png,image/jpeg,image/webp">
-              <span class="upload-icon">＋</span>
-              <span><strong data-i18n="upload">Add screenshot</strong><small data-i18n="uploadSub">Preview only in this local proof of concept</small></span>
+              <span class="upload-plus">＋</span>
+              <span><strong data-i18n="addScreenshot">Screenshot toevoegen</strong><small data-i18n="screenshotSub">Alleen lokale preview in deze alpha</small></span>
             </label>
-            <button id="removeImageBtn" class="link-button hidden" type="button" data-i18n="remove">Remove</button>
+            <button id="removeImageBtn" class="text-button hidden" type="button" data-i18n="remove">Verwijderen</button>
           </div>
-          <img id="preview" class="preview hidden" alt="Uploaded screenshot preview">
-          <p id="screenshotNote" class="privacy-note hidden"><span>i</span><span data-i18n="screenshotNote">The screenshot stays on this device. Text recognition will be connected to the internal agent later.</span></p>
+          <img id="preview" class="screenshot-preview hidden" alt="Screenshot preview">
+
+          <button id="rewriteBtn" class="primary-button full" type="button">
+            <span data-i18n="rewriteButton">Herschrijf met Liv</span><b>→</b>
+          </button>
         </article>
 
-        <aside class="card settings-card">
-          <div class="card-heading"><div><span class="step">02</span><div><h2 data-i18n="settingsTitle">Choose both people</h2><p data-i18n="settingsSub">The app finds a professional bridge between their styles.</p></div></div></div>
+        <div class="workspace-arrow" aria-hidden="true">→</div>
 
-          <div class="people-grid">
-            <label><span class="field-label" data-i18n="sender">Sender—you</span><select id="senderSelect" class="full-select"></select></label>
-            <label><span class="field-label" data-i18n="recipient">Recipient</span><select id="recipientSelect" class="full-select"></select></label>
+        <article class="message-panel output-panel">
+          <div class="panel-head">
+            <div class="step-number success">2</div>
+            <div>
+              <h2 data-i18n="outputTitle">Professionele versie</h2>
+              <p data-i18n="outputSub">Bewerkbaar, controleerbaar en klaar om te kopiëren.</p>
+            </div>
+            <button id="copyTopBtn" class="text-button hidden" type="button" data-i18n="copy">Kopiëren</button>
           </div>
 
-          <div class="profile-pair">
-            <div id="senderProfile" class="profile-card"></div>
-            <div class="bridge-arrow">→</div>
-            <div id="recipientProfile" class="profile-card"></div>
+          <div id="outputEmpty" class="output-empty">
+            <span class="empty-heart">♥</span>
+            <strong data-i18n="emptyTitle">Liv wacht op je tekst.</strong>
+            <p data-i18n="emptyText">De herwerking verschijnt hier naast je originele boodschap.</p>
           </div>
-          <div id="distanceSummary" class="distance-summary"></div>
 
-          <fieldset>
-            <legend data-i18n="adaptation">Adaptation</legend>
-            <div class="choice-row four" data-choice="adaptation">
-              <button class="active" data-value="common_ground" type="button"><strong data-i18n="commonGround">Common ground</strong><small data-i18n="commonGroundSub">bridge both styles</small></button>
-              <button data-value="recipient" type="button"><strong data-i18n="closerThem">Closer to them</strong><small data-i18n="closerThemSub">recipient weighs more</small></button>
-              <button data-value="sender" type="button"><strong data-i18n="closerMe">Closer to me</strong><small data-i18n="closerMeSub">your voice stays dominant</small></button>
-              <button data-value="neutral" type="button"><strong data-i18n="neutral">Neutral</strong><small data-i18n="neutralSub">professional baseline</small></button>
+          <div id="outputContent" class="hidden">
+            <div id="appliedStyle" class="applied-style"></div>
+            <textarea id="resultText" aria-label="Professioneel herschreven antwoord"></textarea>
+            <div class="result-actions">
+              <button id="alternateBtn" class="secondary-button" type="button" data-i18n="alternate">Andere versie</button>
+              <button id="copyBtn" class="primary-button" type="button" data-i18n="copyReply">Kopieer antwoord</button>
+            </div>
+
+            <div class="output-insights">
+              <section>
+                <div class="insight-head"><span>✓</span><strong data-i18n="changedTitle">Wat Liv verbeterde</strong></div>
+                <ul id="changesList" class="insight-list"></ul>
+              </section>
+              <section>
+                <div class="insight-head"><span>↗</span><strong data-i18n="adviceTitle">Verbeter vóór verzending</strong></div>
+                <ul id="adviceList" class="insight-list"></ul>
+              </section>
+            </div>
+
+            <section id="meetingCard" class="meeting-card hidden">
+              <div class="meeting-icon">◉</div>
+              <div>
+                <strong data-i18n="meetingTitle">Dit bespreek je mogelijk beter rechtstreeks.</strong>
+                <p id="meetingReason"></p>
+                <div class="meeting-actions">
+                  <button id="copyMeetingBtn" class="secondary-button" type="button" data-i18n="copyMeeting">Kopieer meetingvoorstel</button>
+                  <a href="https://teams.microsoft.com/" target="_blank" rel="noopener" class="secondary-button" data-i18n="openTeams">Open Teams</a>
+                </div>
+              </div>
+            </section>
+            <p id="resultMeta" class="result-meta"></p>
+          </div>
+        </article>
+      </section>
+
+      <section class="style-bridge card">
+        <div class="section-heading">
+          <div class="step-number">3</div>
+          <div><h2 data-i18n="bridgeTitle">Van wie naar wie?</h2><p data-i18n="bridgeSub">De profielen bepalen niet wat je zegt, maar wel hoe de boodschap het best landt.</p></div>
+        </div>
+
+        <div class="people-selectors">
+          <label><span data-i18n="sender">Afzender — jij</span><select id="senderSelect"></select></label>
+          <label><span data-i18n="recipient">Ontvanger</span><select id="recipientSelect"></select></label>
+        </div>
+
+        <div class="profile-comparison">
+          <div id="senderProfile" class="profile-card"></div>
+          <div class="bridge-summary">
+            <span class="bridge-line"></span>
+            <div id="distanceSummary"></div>
+            <div id="targetMix" class="target-mix"></div>
+            <span class="bridge-line"></span>
+          </div>
+          <div id="recipientProfile" class="profile-card"></div>
+        </div>
+
+        <div class="control-grid">
+          <fieldset class="adaptation-fieldset">
+            <legend data-i18n="adaptation">Afstemming</legend>
+            <div class="adaptation-options" data-choice="adaptation">
+              <button class="active" type="button" data-value="common_ground"><strong data-i18n="commonGround">Gemeenschappelijke stijl</strong><small data-i18n="commonGroundSub">brug tussen beiden</small></button>
+              <button type="button" data-value="recipient"><strong data-i18n="closerThem">Dichter bij ontvanger</strong><small data-i18n="closerThemSub">meer aanpassen</small></button>
+              <button type="button" data-value="sender"><strong data-i18n="closerMe">Dichter bij mezelf</strong><small data-i18n="closerMeSub">eigen stem behouden</small></button>
+              <button type="button" data-value="neutral"><strong data-i18n="neutral">Neutraal professioneel</strong><small data-i18n="neutralSub">zonder profielaccent</small></button>
             </div>
           </fieldset>
 
-          <div class="settings-pair">
-            <label><span class="field-label" data-i18n="tone">Tone</span><select id="toneSelect" class="full-select">
-              <option value="balanced" data-i18n="balanced">Balanced</option>
-              <option value="softer" data-i18n="softer">Softer</option>
-              <option value="direct" data-i18n="direct">More direct</option>
-            </select></label>
-            <label><span class="field-label" data-i18n="intent">Intent</span><select id="intentSelect" class="full-select">
-              <option value="auto" data-i18n="automatic">Detect automatically</option>
-              <option value="ask" data-i18n="ask">Ask a question</option>
-              <option value="request" data-i18n="request">Request action</option>
-              <option value="feedback" data-i18n="feedback">Give feedback</option>
-              <option value="deescalate" data-i18n="deescalate">De-escalate</option>
-              <option value="inform" data-i18n="inform">Inform</option>
-            </select></label>
+          <div class="compact-controls">
+            <label><span data-i18n="tone">Toon</span><select id="toneSelect"><option value="balanced" data-i18n="balanced">In balans</option><option value="softer" data-i18n="softer">Zachter</option><option value="direct" data-i18n="direct">Directer</option></select></label>
+            <label><span data-i18n="intent">Doel</span><select id="intentSelect"><option value="auto" data-i18n="automatic">Automatisch herkennen</option><option value="ask" data-i18n="ask">Vraag stellen</option><option value="request" data-i18n="request">Actie vragen</option><option value="feedback" data-i18n="feedback">Feedback geven</option><option value="deescalate" data-i18n="deescalate">De-escaleren</option><option value="inform" data-i18n="inform">Informeren</option></select></label>
+            <label><span data-i18n="replyLanguage">Taal antwoord</span><select id="replyLanguage"><option value="auto" data-i18n="automatic">Automatisch herkennen</option><option value="nl">Nederlands</option><option value="en">English</option><option value="fr">Français</option><option value="de">Deutsch</option></select></label>
+            <label><span data-i18n="length">Lengte</span><select id="lengthSelect"><option value="brief" data-i18n="brief">Kort</option><option value="balanced" data-i18n="balancedLength">Gebalanceerd</option><option value="detailed" data-i18n="detailed">Met context</option></select></label>
+            <label class="toggle-control"><input id="questionFlip" type="checkbox" checked><span></span><b data-i18n="questionFlip">Zet druk waar mogelijk om in een bruikbare vraag</b></label>
+            <button id="updateRewriteBtn" class="secondary-button full" type="button" data-i18n="updateRewrite">Werk herwerking bij</button>
           </div>
-          <div class="settings-pair">
-            <label><span class="field-label" data-i18n="replyLanguage">Reply language</span><select id="replyLanguage" class="full-select">
-              <option value="auto" data-i18n="automatic">Detect automatically</option>
-              <option value="en">English</option><option value="nl">Nederlands</option><option value="fr">Français</option><option value="de">Deutsch</option>
-            </select></label>
-            <label><span class="field-label" data-i18n="length">Length</span><select id="lengthSelect" class="full-select">
-              <option value="brief" data-i18n="brief">Brief</option>
-              <option value="balanced" data-i18n="balancedLength">Balanced</option>
-              <option value="detailed" data-i18n="withContext">With context</option>
-            </select></label>
-          </div>
-          <label class="toggle"><input id="questionFlip" type="checkbox" checked><span></span><b data-i18n="questionFlip">Turn pressure into a useful question where possible</b></label>
-          <button id="rewriteBtn" class="primary-button full" type="button"><span data-i18n="rewriteButton">Let Liv rewrite</span><b>→</b></button>
-        </aside>
-
-        <article class="card result-card">
-          <div class="card-heading"><div><span class="step done">03</span><div><h2 data-i18n="resultTitle">Professional rewrite</h2><p data-i18n="resultSub">Your meaning and concrete details, rewritten for the selected communication style.</p></div></div><button id="copyBtn" class="link-button" type="button" data-i18n="copy">Copy</button></div>
-          <div id="emptyResult" class="empty-state"><span>♥</span><strong data-i18n="emptyTitle">Liv is ready.</strong><p data-i18n="emptySub">Choose a quick demo or enter your own text.</p></div>
-          <div id="resultContent" class="hidden">
-            <div id="styleSummary" class="style-summary"></div>
-            <section id="adviceCard" class="advice-card hidden">
-              <div class="advice-heading"><span>↗</span><div><strong id="adviceTitle">Improve before sending</strong><p id="adviceIntro">Practical additions based on the recipient’s strongest colour energies.</p></div></div>
-              <ul id="adviceList"></ul>
-            </section>
-            <section id="meetingCard" class="meeting-card hidden"><span>◉</span><div><strong data-i18n="meetingTitle">This may be better discussed directly.</strong><p id="meetingReason"></p><button id="copyMeetingBtn" class="secondary-button" type="button" data-i18n="copyMeeting">Copy meeting suggestion</button></div></section>
-            <p id="otherwiseLabel" class="otherwise hidden" data-i18n="otherwise">If not, this is the written reply:</p>
-            <textarea id="resultText" aria-label="Suggested reply"></textarea>
-            <p id="resultMeta" class="microcopy"></p>
-            <div class="result-actions"><button id="tryAgainBtn" class="secondary-button" type="button" data-i18n="anotherVersion">Another version</button><button id="copyMainBtn" class="primary-button" type="button" data-i18n="copyReply">Copy reply</button></div>
-          </div>
-        </article>
-      </div>
+        </div>
+      </section>
     </section>
 
     <section id="coachMode" class="mode-panel hidden">
       <div class="coach-layout">
         <article class="coach-intro">
-          <p class="eyebrow" data-i18n="coachEyebrow">Confidential and practical</p>
-          <h2 data-i18n="coachTitle">Ask Liv where to go next.</h2>
-          <p data-i18n="coachText">This local demo routes a question to a likely internal contact. It does not diagnose, monitor or report people.</p>
+          <p class="eyebrow" data-i18n="coachEyebrow">Interne wegwijzer</p>
+          <h1 data-i18n="coachTitle">Vraag Liv waar je best terechtkunt.</h1>
+          <p data-i18n="coachText">Liv koppelt je vraag aan de juiste dienst, eigenaar en volgende actie. Deze demo bewaart geen gespreksgeschiedenis.</p>
           <div class="coach-prompts">
-            <button type="button" data-coach="it" data-i18n="coachPromptIt">My laptop, account or infrastructure is not working.</button>
-            <button type="button" data-coach="hr" data-i18n="coachPromptHr">I have an HR or company-car question.</button>
-            <button type="button" data-coach="capacity" data-i18n="coachPrompt1">My project needs more time or capacity.</button>
-            <button type="button" data-coach="conflict" data-i18n="coachPrompt2">A collaboration is becoming difficult.</button>
-            <button type="button" data-coach="privacy" data-i18n="coachPrompt3">I have a privacy or security question.</button>
-            <button type="button" data-coach="wellbeing" data-i18n="coachPrompt4">I would like to talk to someone confidentially.</button>
+            <button type="button" data-coach="it" data-i18n="coachIt">Laptop, VPN, account of infrastructuur werkt niet</button>
+            <button type="button" data-coach="hr" data-i18n="coachHr">HR of bedrijfswagen</button>
+            <button type="button" data-coach="crm" data-i18n="coachCrm">CRM of Salesforce</button>
+            <button type="button" data-coach="dms" data-i18n="coachDms">DMS of documentenbeheer</button>
+            <button type="button" data-coach="capacity" data-i18n="coachCapacity">Project heeft extra tijd of mensen nodig</button>
+            <button type="button" data-coach="conflict" data-i18n="coachConflict">Moeilijke samenwerking of gevoelige vraag</button>
           </div>
-          <div class="coach-boundary"><strong data-i18n="boundaryTitle">Prototype boundary</strong><p data-i18n="boundaryText">No chat history, no HR notification and no sentiment score. A production directory would be managed internally.</p></div>
         </article>
-        <article class="card coach-card">
-          <div class="card-heading"><div><span class="step">01</span><div><h2 data-i18n="coachQuestion">What would you like to ask?</h2><p data-i18n="coachQuestionSub">The wording does not need to be perfect.</p></div></div></div>
-          <textarea id="coachText" maxlength="4000" data-i18n-placeholder="coachPlaceholder" placeholder="Describe the question or situation…"></textarea>
-          <button id="coachBtn" class="primary-button full" type="button"><span data-i18n="askLiv">Ask Liv</span><b>→</b></button>
+
+        <article class="coach-card card">
+          <div class="section-heading"><div class="step-number">1</div><div><h2 data-i18n="coachQuestion">Wat wil je vragen?</h2><p data-i18n="coachQuestionSub">Je hoeft het niet netjes te formuleren.</p></div></div>
+          <textarea id="coachText" maxlength="4000" data-i18n-placeholder="coachPlaceholder" placeholder="Bijvoorbeeld: mijn laptop krijgt geen VPN-verbinding en ik moet dringend thuis kunnen werken."></textarea>
+          <button id="coachBtn" class="primary-button full" type="button"><span data-i18n="askLiv">Vraag het aan Liv</span><b>→</b></button>
           <div id="coachResult" class="coach-result hidden"></div>
         </article>
       </div>
     </section>
 
     <section id="profilesMode" class="mode-panel hidden">
-      <div class="profiles-toolbar card">
-        <div><p class="eyebrow" data-i18n="profilesEyebrow">Local profile source</p><h2 data-i18n="profilesTitle">50 fictional personas for testing</h2><p data-i18n="profilesText">Import your own CSV later; it is stored only in this browser. Use fictional or approved data for demonstrations.</p></div>
-        <div class="toolbar-actions">
-          <label class="secondary-button file-button"><input id="csvInput" type="file" accept=".csv,text/csv"><span data-i18n="importCsv">Import CSV</span></label>
-          <button id="downloadCsvBtn" class="secondary-button" type="button" data-i18n="downloadCsv">Download current CSV</button>
-          <button id="resetCsvBtn" class="link-button" type="button" data-i18n="resetDemo">Reset demo data</button>
+      <div class="profiles-header card">
+        <div><p class="eyebrow" data-i18n="profilesEyebrow">Lokale CSV-bron</p><h1 data-i18n="profilesTitle">50 fictieve testprofielen</h1><p data-i18n="profilesText">Elk profiel heeft één duidelijk dominante kleurenergie. CSV-import blijft uitsluitend in deze browser.</p></div>
+        <div class="profile-actions">
+          <label class="secondary-button file-button"><input id="csvInput" type="file" accept=".csv,text/csv"><span data-i18n="importCsv">CSV importeren</span></label>
+          <button id="downloadCsvBtn" class="secondary-button" type="button" data-i18n="downloadCsv">CSV downloaden</button>
+          <button id="resetCsvBtn" class="text-button" type="button" data-i18n="resetCsv">Demo herstellen</button>
         </div>
       </div>
-      <div class="profiles-stats">
-        <div><strong id="profileCount">50</strong><span data-i18n="profilesLoaded">profiles loaded</span></div>
-        <div><strong id="departmentCount">0</strong><span data-i18n="departments">departments</span></div>
-        <div><strong id="averageDistance">0%</strong><span data-i18n="averageDistance">average style distance</span></div>
-      </div>
-      <div class="profiles-filter card">
-        <input id="profileSearch" type="search" data-i18n-placeholder="searchProfiles" placeholder="Search name, role or department…">
-        <select id="departmentFilter"><option value="" data-i18n="allDepartments">All departments</option></select>
-      </div>
+      <div class="profile-stats"><div><strong id="profileCount">50</strong><span data-i18n="profilesLoaded">profielen</span></div><div><strong id="departmentCount">0</strong><span data-i18n="departments">diensten</span></div><div><strong id="averageDistance">0%</strong><span data-i18n="averageDistance">gemiddelde stijlafstand</span></div></div>
+      <div class="profile-filter card"><input id="profileSearch" type="search" data-i18n-placeholder="searchProfiles" placeholder="Zoek naam, rol of dienst…"><select id="departmentFilter"><option value="" data-i18n="allDepartments">Alle diensten</option></select></div>
       <div id="personaGrid" class="persona-grid"></div>
-      <div class="method-note"><strong data-i18n="methodTitle">Method note</strong><span data-i18n="methodText">The four colour energies are used here as communication guidance, not as labels or a new assessment. Confirm internal licensing before using proprietary terminology or materials in production.</span></div>
     </section>
   </main>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="./app.js"></script>
+  <script type="module" src="./app.js?v=0.8.0"></script>
 </body>
 </html>

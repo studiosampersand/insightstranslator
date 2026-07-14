@@ -1,0 +1,32 @@
+{
+  "conversationId": "demo-project-delay",
+  "messageId": "m4",
+  "originalText": "De prioriteit is duidelijk: dit project moet af. Ik verwacht tegen 15 uur een eigenaar en deadline voor elk open punt.",
+  "speakerId": "P014",
+  "speakerName": "Lars De Smet",
+  "speakerProfile": {
+    "id": "P014",
+    "name": "Lars De Smet",
+    "role": "Managing Director",
+    "cool_blue": 18,
+    "fiery_red": 62,
+    "sunshine_yellow": 12,
+    "earth_green": 8
+  },
+  "status": "flagged",
+  "labels": [
+    "negative",
+    "attacking",
+    "passive_aggressive",
+    "too_direct"
+  ],
+  "reason": "",
+  "suggestedRewrite": "Ik begrijp dat er ook andere dringende taken zijn. Dit project stond echter op de planning, dus moet als prioritair beschouwd worden.",
+  "adaptationMode": "common_ground",
+  "conversationTitle": "Demo · projectvertraging en ontbrekende documentatie",
+  "updatedAt": "2026-07-14T12:10:35.806Z",
+  "issueNumber": 4,
+  "issueUrl": "https://github.com/studiosampersand/insightstranslator/issues/4",
+  "reviewedBy": "studiosampersand",
+  "receivedAt": "2026-07-14T12:10:50.278Z"
+}

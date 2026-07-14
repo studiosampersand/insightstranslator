@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "issueNumber": 4,
+    "conversationId": "demo-project-delay",
+    "messageId": "m4",
+    "status": "flagged",
+    "labels": [
+      "negative",
+      "attacking",
+      "passive_aggressive",
+      "too_direct"
+    ],
+    "reviewedBy": "studiosampersand",
+    "receivedAt": "2026-07-14T12:10:50.278Z",
+    "path": "./data/reviews/review-4-demo-project-delay-m4.json"
+  }
+]

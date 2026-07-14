@@ -1,0 +1,12 @@
+[
+  {
+    "id": "demo-project-delay",
+    "title": "Demo · projectvertraging en ontbrekende documentatie",
+    "scenarioId": "project-delay",
+    "language": "nl",
+    "tension": "verhoogd",
+    "generatedAt": "2026-07-14T09:45:00Z",
+    "messageCount": 6,
+    "path": "./data/conversations/demo-project-delay.json"
+  }
+]

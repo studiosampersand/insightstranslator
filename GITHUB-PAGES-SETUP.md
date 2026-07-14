@@ -1,29 +1,11 @@
-# Upload to the `insightstranslator` GitHub repository
+# Quick setup
 
-1. Extract the ZIP.
-2. Open your GitHub repository `insightstranslator`.
-3. Delete or overwrite the previous root files.
-4. Upload all files and folders from the extracted package. Do not upload the ZIP itself and do not add an extra containing folder.
-5. Commit to `main`.
-6. Go to **Settings → Pages**.
-7. Choose **Deploy from a branch**.
-8. Select branch `main` and folder `/(root)`.
-9. Save.
-10. After deployment, open the site once with a hard refresh. The new service worker uses cache version `v0.8.0` and removes older caches.
+1. Upload the extracted contents to the root of `insightstranslator`.
+2. Open **Settings → Pages → Source: GitHub Actions**.
+3. Open **Settings → Models → Enabled**.
+4. Open **Settings → Actions → General → Workflow permissions** and enable read/write plus pull-request creation.
+5. Run **Set up Liz repository labels** once.
+6. Run **Generate Liz conversation**, review its pull request and merge it.
+7. Open the Pages site → **Teach Liz** to review messages.
 
-Expected repository root:
-
-```text
-index.html
-app.js
-styles.css
-manifest.webmanifest
-service-worker.js
-.nojekyll
-data/
-icons/
-docs/
-tests/
-```
-
-Only fictional test profiles are included because a GitHub Pages site is publicly accessible.
+Detailed instructions: [`docs/GITHUB-SETUP.md`](docs/GITHUB-SETUP.md).

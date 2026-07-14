@@ -1,0 +1,25 @@
+{
+  "id": "demo-project-delay",
+  "title": "Demo · projectvertraging en ontbrekende documentatie",
+  "scenarioId": "project-delay",
+  "scenario": "Een intern project loopt een week achter. De technische documentatie ontbreekt en de deadline van vrijdag staat onder druk.",
+  "objective": "Maak blokkeringen zichtbaar en kom tot concrete acties.",
+  "language": "nl",
+  "tension": "verhoogd",
+  "generatedAt": "2026-07-14T09:45:00Z",
+  "generatedBy": "seed",
+  "model": "seed-data",
+  "participants": [
+    {"id":"P014","name":"Lars De Smet","role":"Managing Director","cool_blue":18,"fiery_red":62,"sunshine_yellow":12,"earth_green":8},
+    {"id":"P003","name":"Claire Lambert","role":"Legal Counsel","cool_blue":66,"fiery_red":12,"sunshine_yellow":7,"earth_green":15},
+    {"id":"P039","name":"Nora De Meyer","role":"People Partner","cool_blue":12,"fiery_red":10,"sunshine_yellow":14,"earth_green":64}
+  ],
+  "messages": [
+    {"id":"m1","turn":1,"speakerId":"P014","speakerName":"Lars De Smet","text":"Waarom is dit nog altijd niet rond? We hadden vrijdag afgesproken en ik wil dat dit vandaag eindelijk wordt opgelost."},
+    {"id":"m2","turn":2,"speakerId":"P003","speakerName":"Claire Lambert","text":"Ik kan Legal niet laten goedkeuren zonder de laatste technische documentatie en de definitieve lijst met openstaande risico's."},
+    {"id":"m3","turn":3,"speakerId":"P039","speakerName":"Nora De Meyer","text":"Het team probeert dit op te lossen, maar er zijn drie dringende dossiers bijgekomen. Kunnen we eerst afspreken wat vandaag echt prioriteit heeft?"},
+    {"id":"m4","turn":4,"speakerId":"P014","speakerName":"Lars De Smet","text":"De prioriteit is duidelijk: dit project moet af. Ik verwacht tegen 15 uur een eigenaar en deadline voor elk open punt."},
+    {"id":"m5","turn":5,"speakerId":"P003","speakerName":"Claire Lambert","text":"Dat is werkbaar als we ook bevestigen welke versie van het architectuurdocument als definitief geldt. Kun je de correcte link toevoegen?"},
+    {"id":"m6","turn":6,"speakerId":"P039","speakerName":"Nora De Meyer","text":"Ik plan om 13 uur een kort overleg met IT en Legal. Daarna delen we één overzicht met eigenaars, timing en de documentlink."}
+  ]
+}

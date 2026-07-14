@@ -2,7 +2,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root = path.resolve(new URL('..', import.meta.url).pathname);
-const required = ['index.html','app.js','styles.css','manifest.webmanifest','service-worker.js','.nojekyll','data/personas.csv'];
+const required = [
+  'index.html','app.js','styles.css','manifest.webmanifest','service-worker.js','.nojekyll',
+  'teach.html','teach.js','teach.css','config.js','data/personas.csv','data/scenarios.json',
+  'data/conversations/index.json','data/conversations/demo-project-delay.json',
+  'scripts/generate-conversation.mjs','scripts/process-review-issue.mjs','scripts/evaluate-liz.mjs',
+  '.github/workflows/deploy-pages.yml','.github/workflows/generate-conversations.yml',
+  '.github/workflows/process-review.yml','.github/workflows/evaluate-liz.yml'
+];
 for (const file of required) {
   if (!fs.existsSync(path.join(root,file))) throw new Error(`Missing ${file}`);
 }
@@ -16,6 +23,11 @@ for (const line of csv.slice(1)) {
   if (values.reduce((a,b)=>a+b,0)!==100) throw new Error(`Profile does not total 100: ${line}`);
   if (Math.max(...values)<=50) throw new Error(`Profile has no dominant energy above 50: ${line}`);
 }
+for (const file of ['data/scenarios.json','data/conversations/index.json','data/conversations/demo-project-delay.json','data/reviews/index.json']) {
+  JSON.parse(fs.readFileSync(path.join(root,file),'utf8'));
+}
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
-for(const ref of ['./styles.css?v=0.8.0','./app.js?v=0.8.0','./manifest.webmanifest'])if(!html.includes(ref))throw new Error(`Missing HTML reference ${ref}`);
-console.log('Validation passed: files, 50 profiles, dominant percentages and HTML references.');
+for(const ref of ['./styles.css?v=0.9.0','./app.js?v=0.9.0','./manifest.webmanifest','./teach.html'])if(!html.includes(ref))throw new Error(`Missing HTML reference ${ref}`);
+const teach=fs.readFileSync(path.join(root,'teach.html'),'utf8');
+for(const ref of ['./teach.css?v=0.9.0','./teach.js?v=0.9.0','./config.js?v=0.9.0'])if(!teach.includes(ref))throw new Error(`Missing Teach reference ${ref}`);
+console.log('Validation passed: PWA, 50 profiles, Teach Liz UI, datasets and workflow files.');

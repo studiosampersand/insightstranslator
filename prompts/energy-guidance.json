@@ -1,0 +1,18 @@
+{
+  "cool_blue": {
+    "needs": ["facts", "structure", "evidence", "documentation", "clear assumptions"],
+    "risks": ["over-analysis", "cold wording", "too many caveats"]
+  },
+  "fiery_red": {
+    "needs": ["decision", "result", "owner", "deadline", "brevity"],
+    "risks": ["commands", "impatience", "unnecessary bluntness"]
+  },
+  "sunshine_yellow": {
+    "needs": ["involvement", "energy", "possibilities", "human connection", "room for ideas"],
+    "risks": ["vagueness", "overpromising", "too much small talk"]
+  },
+  "earth_green": {
+    "needs": ["support", "stability", "team impact", "alignment", "time to respond"],
+    "risks": ["avoiding decisions", "over-softening", "unclear ownership"]
+  }
+}

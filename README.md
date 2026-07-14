@@ -1,19 +1,19 @@
-# BeNice · Insights Translator alpha v0.8.0
+# InsightTranslator / BeNice · Teach Liz v0.9.0
 
-Static GitHub Pages PWA for alpha testing with management and internal testers.
+This repository combines:
 
-## What changed in v0.8.0
+1. **GitHub Pages** — the public proof-of-concept interface.
+2. **GitHub Actions** — conversation generation, review processing and evaluation.
+3. **GitHub Models** — turn-by-turn synthetic workplace conversations.
+4. **GitHub Issues** — human review submissions from the Teach Liz page.
+5. **Pull requests** — controlled approval before generated conversations or review records enter the dataset.
 
-- Restored a clear side-by-side workflow: original text left, professional rewrite right.
-- Moved sender/recipient profiles and all style controls below the message workspace.
-- Fixed colour-energy meters: every bar visibly fills to the CSV percentage.
-- Rebuilt the local rewrite engine so it transforms the entered text instead of selecting a canned reply.
-- Added separate sections for what changed, before-send advice and direct-conversation recommendations.
-- Kept Ask Liv as an internal routing assistant, including HaloPSA for IT hardware/infrastructure.
-- Uses 50 fictional profiles with one energy above 50% in every row.
+## Important boundary
 
-## GitHub Pages
+This GitHub proof of concept is only for fictional personas and synthetic workplace scenarios. Do not add real employee profiles, real HR information, real Teams messages, confidential project data or private communication to a public repository or public GitHub Pages site.
 
-Upload the *contents* of this folder to the repository root and publish `main / (root)` under **Settings → Pages**.
+The instant **Rewrite** screen still uses the local alpha rule engine. GitHub Pages cannot safely contain a GitHub token, so it cannot call GitHub Models directly from the browser. Teach Liz uses GitHub Models through GitHub Actions instead.
 
-The production concept will use an internal agent. This alpha uses a deterministic browser engine and must not be represented as a full language model.
+## Start here
+
+Read [`docs/GITHUB-SETUP.md`](docs/GITHUB-SETUP.md).

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "project-delay",
+    "title": "Project loopt vertraging op",
+    "description": "Een belangrijk intern project loopt een week achter. Er ontbreken technische documentatie, duidelijke eigenaars en een haalbare planning.",
+    "defaultObjective": "Maak blokkeringen zichtbaar, verdeel acties en kom tot een haalbare afspraak."
+  },
+  {
+    "id": "missing-documentation",
+    "title": "Documentatie ontbreekt",
+    "description": "Een collega heeft de afgesproken documentatie nog niet aangeleverd, waardoor een andere dienst niet verder kan.",
+    "defaultObjective": "Vraag concreet wat ontbreekt, wie het aanlevert en tegen wanneer."
+  },
+  {
+    "id": "capacity-pressure",
+    "title": "Te weinig capaciteit",
+    "description": "Het team krijgt extra werk zonder extra tijd of mensen. De deadline blijft voorlopig ongewijzigd.",
+    "defaultObjective": "Bespreek prioriteiten, capaciteit en een realistische planning zonder verwijten."
+  },
+  {
+    "id": "difficult-feedback",
+    "title": "Moeilijke feedback",
+    "description": "Een deliverable voldoet niet aan de afgesproken kwaliteit. De betrokken collega reageert defensief.",
+    "defaultObjective": "Geef feitelijke feedback, behoud samenwerking en spreek een concrete volgende stap af."
+  }
+]

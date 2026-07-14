@@ -7,7 +7,7 @@
   <meta name="description" content="BeNice alpha prototype: professionele tekstverbetering afgestemd op Insights Discovery kleurenergieën.">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=0.8.0">
+  <link rel="stylesheet" href="./styles.css?v=0.9.0">
   <title>BeNice · Insights Translator alpha</title>
 </head>
 <body>
@@ -20,8 +20,9 @@
 
     <nav class="main-nav" aria-label="Hoofdnavigatie">
       <button class="active" type="button" data-mode="rewrite" data-i18n="navRewrite">Herschrijven</button>
-      <button type="button" data-mode="coach" data-i18n="navCoach">Ask Liv</button>
+      <button type="button" data-mode="coach" data-i18n="navCoach">Ask Liz</button>
       <button type="button" data-mode="profiles" data-i18n="navProfiles">Testprofielen</button>
+      <a href="./teach.html">Teach Liz</a>
     </nav>
 
     <div class="header-actions">
@@ -42,7 +43,7 @@
         <div>
           <p class="eyebrow" data-i18n="eyebrow">Jouw boodschap. Professioneel afgestemd.</p>
           <h1 data-i18n="title">Van ruwe tekst naar een bruikbaar antwoord.</h1>
-          <p data-i18n="subtitle">Liv behoudt de inhoud, verzacht onnodige frictie en past structuur, detail en toon aan de ontvanger aan.</p>
+          <p data-i18n="subtitle">Liz behoudt de inhoud, verzacht onnodige frictie en past structuur, detail en toon aan de ontvanger aan.</p>
         </div>
         <div class="prototype-note">
           <strong data-i18n="pocTitle">Alpha proof of concept</strong>
@@ -65,7 +66,7 @@
             <div class="step-number">1</div>
             <div>
               <h2 data-i18n="inputTitle">Jouw tekst</h2>
-              <p data-i18n="inputSub">Schrijf zoals je het denkt. Liv maakt er een professionele versie van.</p>
+              <p data-i18n="inputSub">Schrijf zoals je het denkt. Liz maakt er een professionele versie van.</p>
             </div>
             <button id="clearBtn" class="text-button" type="button" data-i18n="clear">Wissen</button>
           </div>
@@ -89,7 +90,7 @@
           <img id="preview" class="screenshot-preview hidden" alt="Screenshot preview">
 
           <button id="rewriteBtn" class="primary-button full" type="button">
-            <span data-i18n="rewriteButton">Herschrijf met Liv</span><b>→</b>
+            <span data-i18n="rewriteButton">Herschrijf met Liz</span><b>→</b>
           </button>
         </article>
 
@@ -107,7 +108,7 @@
 
           <div id="outputEmpty" class="output-empty">
             <span class="empty-heart">♥</span>
-            <strong data-i18n="emptyTitle">Liv wacht op je tekst.</strong>
+            <strong data-i18n="emptyTitle">Liz wacht op je tekst.</strong>
             <p data-i18n="emptyText">De herwerking verschijnt hier naast je originele boodschap.</p>
           </div>
 
@@ -121,7 +122,7 @@
 
             <div class="output-insights">
               <section>
-                <div class="insight-head"><span>✓</span><strong data-i18n="changedTitle">Wat Liv verbeterde</strong></div>
+                <div class="insight-head"><span>✓</span><strong data-i18n="changedTitle">Wat Liz verbeterde</strong></div>
                 <ul id="changesList" class="insight-list"></ul>
               </section>
               <section>
@@ -195,8 +196,8 @@
       <div class="coach-layout">
         <article class="coach-intro">
           <p class="eyebrow" data-i18n="coachEyebrow">Interne wegwijzer</p>
-          <h1 data-i18n="coachTitle">Vraag Liv waar je best terechtkunt.</h1>
-          <p data-i18n="coachText">Liv koppelt je vraag aan de juiste dienst, eigenaar en volgende actie. Deze demo bewaart geen gespreksgeschiedenis.</p>
+          <h1 data-i18n="coachTitle">Vraag Liz waar je best terechtkunt.</h1>
+          <p data-i18n="coachText">Liz koppelt je vraag aan de juiste dienst, eigenaar en volgende actie. Deze demo bewaart geen gespreksgeschiedenis.</p>
           <div class="coach-prompts">
             <button type="button" data-coach="it" data-i18n="coachIt">Laptop, VPN, account of infrastructuur werkt niet</button>
             <button type="button" data-coach="hr" data-i18n="coachHr">HR of bedrijfswagen</button>
@@ -210,7 +211,7 @@
         <article class="coach-card card">
           <div class="section-heading"><div class="step-number">1</div><div><h2 data-i18n="coachQuestion">Wat wil je vragen?</h2><p data-i18n="coachQuestionSub">Je hoeft het niet netjes te formuleren.</p></div></div>
           <textarea id="coachText" maxlength="4000" data-i18n-placeholder="coachPlaceholder" placeholder="Bijvoorbeeld: mijn laptop krijgt geen VPN-verbinding en ik moet dringend thuis kunnen werken."></textarea>
-          <button id="coachBtn" class="primary-button full" type="button"><span data-i18n="askLiv">Vraag het aan Liv</span><b>→</b></button>
+          <button id="coachBtn" class="primary-button full" type="button"><span data-i18n="askLiz">Vraag het aan Liz</span><b>→</b></button>
           <div id="coachResult" class="coach-result hidden"></div>
         </article>
       </div>
@@ -232,6 +233,6 @@
   </main>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="./app.js?v=0.8.0"></script>
+  <script type="module" src="./app.js?v=0.9.0"></script>
 </body>
 </html>

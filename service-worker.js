@@ -1,8 +1,10 @@
-const VERSION = 'insightstranslator-v0.8.0';
+const VERSION = 'insightstranslator-v0.9.0';
 const STATIC_CACHE = `${VERSION}-static`;
 const APP_SHELL = [
-  './','./index.html','./styles.css?v=0.8.0','./app.js?v=0.8.0','./manifest.webmanifest',
-  './data/personas.csv','./icons/icon.svg','./icons/icon-192.png','./icons/icon-512.png'
+  './','./index.html','./styles.css?v=0.9.0','./app.js?v=0.9.0','./manifest.webmanifest','./config.js?v=0.9.0',
+  './teach.html','./teach.css?v=0.9.0','./teach.js?v=0.9.0',
+  './data/personas.csv','./data/scenarios.json','./data/conversations/index.json','./data/conversations/demo-project-delay.json',
+  './icons/icon.svg','./icons/icon-192.png','./icons/icon-512.png'
 ];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(STATIC_CACHE).then(cache => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()));
@@ -15,9 +17,11 @@ self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
   if (event.request.mode === 'navigate') {
+    const fallback = url.pathname.endsWith('/teach.html') ? './teach.html' : './index.html';
     event.respondWith(fetch(event.request).then(response => {
-      const copy=response.clone();caches.open(STATIC_CACHE).then(cache=>cache.put('./index.html',copy));return response;
-    }).catch(()=>caches.match('./index.html')));
+      if (response.ok) { const copy = response.clone(); caches.open(STATIC_CACHE).then(cache => cache.put(event.request, copy)); }
+      return response;
+    }).catch(() => caches.match(fallback)));
     return;
   }
   event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {

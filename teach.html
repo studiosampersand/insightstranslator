@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#4b2a82">
+  <meta name="description" content="Teach Liz: review synthetische gesprekken en bouw een gecontroleerde communicatiedataset.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css?v=0.9.0">
+  <link rel="stylesheet" href="./teach.css?v=0.9.0">
+  <title>Teach Liz · Insights Translator</title>
+</head>
+<body>
+  <div class="brand-ribbon" aria-hidden="true"></div>
+  <header class="app-header">
+    <a class="brand" href="./index.html" aria-label="BeNice home">
+      <span class="brand-mark" aria-hidden="true">♥</span>
+      <span><strong>BeNice</strong><small>Insights Translator · Teach Liz</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Hoofdnavigatie">
+      <a href="./index.html#rewrite">Herschrijven</a>
+      <a href="./index.html#coach">Ask Liv</a>
+      <a href="./index.html#profiles">Testprofielen</a>
+      <a class="active" href="./teach.html">Teach Liz</a>
+    </nav>
+    <div class="header-actions">
+      <span class="local-badge"><i></i><span>Synthetische data</span></span>
+      <a id="actionsLink" class="square-button teach-action-button" href="#" target="_blank" rel="noopener" title="Open GitHub Actions">⚙</a>
+    </div>
+  </header>
+
+  <main class="teach-shell">
+    <section class="teach-hero">
+      <div>
+        <p class="eyebrow">Menselijke kwaliteitscontrole</p>
+        <h1>Bekijk gesprekken. Markeer frictie. Leer Liz wat wél werkt.</h1>
+        <p>GitHub Models genereert synthetische gesprekken. Jij beoordeelt elk bericht en legt vast waarom een formulering goed, aanvallend, passief-agressief of onbruikbaar is.</p>
+      </div>
+      <div class="teach-hero-actions">
+        <a id="generateLink" class="primary-button" href="#" target="_blank" rel="noopener">Nieuw gesprek genereren</a>
+        <button id="exportAllBtn" class="secondary-button" type="button">Lokale reviews exporteren</button>
+      </div>
+    </section>
+
+    <section class="teach-stats" aria-label="Datasetstatistieken">
+      <article><span>Gesprekken</span><strong id="conversationCount">0</strong></article>
+      <article><span>Berichten in selectie</span><strong id="messageCount">0</strong></article>
+      <article><span>Lokaal beoordeeld</span><strong id="reviewedCount">0</strong></article>
+      <article><span>Gemarkeerd</span><strong id="flaggedCount">0</strong></article>
+    </section>
+
+    <section class="teach-toolbar card">
+      <label>
+        <span>Gesprek</span>
+        <select id="conversationSelect"></select>
+      </label>
+      <label>
+        <span>Filter berichten</span>
+        <select id="messageFilter">
+          <option value="all">Alles</option>
+          <option value="unreviewed">Nog niet beoordeeld</option>
+          <option value="flagged">Gemarkeerd</option>
+          <option value="approved">Goedgekeurd</option>
+        </select>
+      </label>
+      <div class="conversation-meta" id="conversationMeta"></div>
+    </section>
+
+    <section class="teach-workspace">
+      <article class="conversation-panel card">
+        <div class="teach-panel-head">
+          <div>
+            <p class="eyebrow">Gesprek</p>
+            <h2 id="conversationTitle">Selecteer een gesprek</h2>
+            <p id="conversationScenario"></p>
+          </div>
+          <span id="conversationTension" class="tension-pill"></span>
+        </div>
+        <div id="participantStrip" class="participant-strip"></div>
+        <div id="messageList" class="message-list" aria-live="polite"></div>
+      </article>
+
+      <aside class="review-panel card">
+        <div id="reviewEmpty" class="review-empty">
+          <span>✎</span>
+          <strong>Selecteer een bericht</strong>
+          <p>Daarna kun je het goedkeuren, markeren en een betere versie schrijven.</p>
+        </div>
+
+        <div id="reviewForm" class="hidden">
+          <div class="teach-panel-head compact">
+            <div>
+              <p class="eyebrow">Beoordeling</p>
+              <h2 id="reviewSpeaker">Bericht beoordelen</h2>
+            </div>
+            <span id="reviewStatusBadge" class="review-status">Niet beoordeeld</span>
+          </div>
+
+          <blockquote id="selectedMessageText"></blockquote>
+          <div id="selectedSpeakerProfile" class="selected-profile"></div>
+
+          <fieldset class="decision-fieldset">
+            <legend>Algemeen oordeel</legend>
+            <div class="decision-buttons" data-review-choice="status">
+              <button type="button" data-value="approved">✓ Goed</button>
+              <button type="button" data-value="flagged">⚑ Niet oké</button>
+              <button type="button" data-value="needs_rewrite">↻ Herschrijven</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="flags-fieldset">
+            <legend>Wat is er mis?</legend>
+            <div id="flagOptions" class="flag-grid">
+              <label><input type="checkbox" value="negative"><span>Onnodig negatief</span></label>
+              <label><input type="checkbox" value="attacking"><span>Aanvallend</span></label>
+              <label><input type="checkbox" value="passive_aggressive"><span>Passief-agressief</span></label>
+              <label><input type="checkbox" value="too_direct"><span>Te direct</span></label>
+              <label><input type="checkbox" value="too_soft"><span>Te zacht</span></label>
+              <label><input type="checkbox" value="too_vague"><span>Te vaag</span></label>
+              <label><input type="checkbox" value="missed_context"><span>Context gemist</span></label>
+              <label><input type="checkbox" value="invented_facts"><span>Feiten verzonnen</span></label>
+              <label><input type="checkbox" value="wrong_profile_fit"><span>Verkeerde profielmatch</span></label>
+              <label><input type="checkbox" value="better_spoken"><span>Beter mondeling</span></label>
+            </div>
+          </fieldset>
+
+          <label class="review-field">
+            <span>Waarom is dit goed of niet goed?</span>
+            <textarea id="reviewReason" rows="4" placeholder="Bijvoorbeeld: ‘opnieuw’ en ‘eindelijk’ maken het persoonlijk. De actie en deadline mogen wel duidelijk blijven."></textarea>
+          </label>
+
+          <label class="review-field">
+            <span>Betere professionele formulering</span>
+            <textarea id="suggestedRewrite" rows="5" placeholder="Schrijf hier de versie die Liz later als goed voorbeeld mag gebruiken."></textarea>
+          </label>
+
+          <div class="review-options">
+            <label>
+              <span>Adaptatiemodus</span>
+              <select id="adaptationMode">
+                <option value="common_ground">Common ground</option>
+                <option value="recipient">Tailored to recipient</option>
+                <option value="sender">Closer to sender</option>
+                <option value="neutral">Neutral professional</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="review-actions">
+            <button id="saveReviewBtn" class="secondary-button" type="button">Lokaal bewaren</button>
+            <button id="exportReviewBtn" class="secondary-button" type="button">JSON downloaden</button>
+            <button id="submitIssueBtn" class="primary-button" type="button">Indienen als GitHub issue</button>
+          </div>
+          <p class="privacy-note">De GitHub-PoC is alleen voor fictieve profielen en synthetische gesprekken. Gebruik hier geen echte medewerkerberichten.</p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <div id="teachToast" class="toast" role="status" aria-live="polite"></div>
+  <script src="./config.js?v=0.9.0"></script>
+  <script src="./teach.js?v=0.9.0" type="module"></script>
+</body>
+</html>

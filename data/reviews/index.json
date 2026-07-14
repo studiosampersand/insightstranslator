@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "issueNumber": 6,
+    "conversationId": "demo-project-delay",
+    "messageId": "m6",
+    "status": "flagged",
+    "labels": [
+      "too_vague"
+    ],
+    "reviewedBy": "studiosampersand",
+    "receivedAt": "2026-07-14T12:13:07.240Z",
+    "path": "./data/reviews/review-6-demo-project-delay-m6.json"
+  }
+]

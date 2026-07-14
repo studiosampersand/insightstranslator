@@ -1,0 +1,26 @@
+{
+  "id": "issue-6-demo-project-delay-m6",
+  "sourceConversationId": "demo-project-delay",
+  "sourceMessageId": "m6",
+  "originalText": "Ik plan om 13 uur een kort overleg met IT en Legal. Daarna delen we één overzicht met eigenaars, timing en de documentlink.",
+  "labels": [
+    "too_vague"
+  ],
+  "reason": "",
+  "approvedRewrite": "Ik nodig de betrokken partijen uit voor een kort overleg; waarna we duidelijk de timing van de drie andere dossier kunnen bekijken en alles terug op de rails houden.",
+  "speakerProfile": {
+    "id": "P039",
+    "name": "Nora De Meyer",
+    "role": "People Partner",
+    "cool_blue": 12,
+    "fiery_red": 10,
+    "sunshine_yellow": 14,
+    "earth_green": 64
+  },
+  "recipientProfile": null,
+  "adaptationMode": "common_ground",
+  "status": "candidate",
+  "reviewedBy": "studiosampersand",
+  "sourceIssue": "https://github.com/studiosampersand/insightstranslator/issues/6",
+  "createdAt": "2026-07-14T12:13:07.240Z"
+}
